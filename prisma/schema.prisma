@@ -1,0 +1,47 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+model User {
+  id         String          @id @default(cuid())
+  name       String
+  email      String          @unique
+  avatar     String?
+  documents  Document[]      @relation("DocumentOwner")
+  sharedDocs DocumentShare[]
+  createdAt  DateTime        @default(now())
+}
+
+model Document {
+  id        String          @id @default(cuid())
+  title     String          @default("Untitled Document")
+  content   String          @default("") // Rich text content stored as HTML/JSON
+  ownerId   String
+  owner     User            @relation("DocumentOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  shares    DocumentShare[]
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  @@index([ownerId])
+}
+
+model DocumentShare {
+  id         String   @id @default(cuid())
+  documentId String
+  document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role       String   @default("editor") // "editor" | "viewer"
+  createdAt  DateTime @default(now())
+
+  @@unique([documentId, userId])
+  @@index([userId])
+  @@index([documentId])
+}
