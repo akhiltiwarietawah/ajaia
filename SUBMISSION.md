@@ -2,7 +2,9 @@
 
 ## 📦 Submission Deliverables
 
-- **Source Code Repository**: Clean, modular Next.js 14 + TypeScript codebase.
+- **Live Production URL**: [https://ajaia-snowy-eight.vercel.app/](https://ajaia-snowy-eight.vercel.app/)
+- **Video Walkthrough (YouTube)**: [https://youtu.be/rgYODpDrfVQ](https://youtu.be/rgYODpDrfVQ)
+- **GitHub Repository**: [https://github.com/akhiltiwarietawah/ajaia](https://github.com/akhiltiwarietawah/ajaia)
 - **[README.md](file:///home/akhil/projects/ajaio/README.md)**: Setup guide, features, PostgreSQL / Supabase configuration, testing, and reviewer walkthrough.
 - **[ARCHITECTURE.md](file:///home/akhil/projects/ajaio/ARCHITECTURE.md)**: System diagrams, data model, editor architecture, access control, and PostgreSQL persistence.
 - **[AI_WORKFLOW.md](file:///home/akhil/projects/ajaio/AI_WORKFLOW.md)**: AI methodology, acceleration metrics, prompting strategies, and concrete corrections.
